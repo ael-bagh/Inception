@@ -6,8 +6,8 @@ services:
     ports:
       - 443:443
       - 80:80
-  mariadb:
-    build: ./requirements/mariadb
-    ports:
-      - 3306:3306
+#  mariadb:
+#    build: ./requirements/mariadb
+#    ports:
+#      - 3306:3306
 
