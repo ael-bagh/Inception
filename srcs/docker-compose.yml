@@ -9,7 +9,7 @@ services:
       - .tools/data/html:/var/www/html/wordpress
   wordpress:
     build: ./requirements/wordpress
-    volumes: 
+    volumes:
       - ./tools/data/html:/var/www/html/wordpress
 #  mariadb:
 #    build: ./requirements/mariadb
