@@ -40,7 +40,7 @@ server {
 	#
 	# include snippets/snakeoil.conf;
 
-	root /var/www/html;
+	root /var/www/html/wordpress;
 
 	# Add index.php to the list if you are using PHP
 	index index.php index.html index.htm index.nginx-debian.html;
@@ -48,6 +48,8 @@ server {
 
 
 	server_name _;
+	access_log /var/log/nginx/wordpress_access.log;
+	error_log /var/log/nginx/wordpress_error.log;
 
 	location / {
 		# First attempt to serve request as file, then
@@ -58,6 +60,12 @@ server {
 	# pass PHP scripts to FastCGI server
 	#
 	location ~ \.php$ {
+		fastcgi_split_path_info ^(.+\.php)(/.+)$;
+  		fastcgi_pass 127.0.0.1:9000;
+  		fastcgi_index index.php;
+  		include fastcgi_params;
+  		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+  		fastcgi_param SCRIPT_NAME $fastcgi_script_name;
 		include snippets/fastcgi-php.conf;
 	#
 		# With php-fpm (or other unix sockets):
