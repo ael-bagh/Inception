@@ -23,5 +23,5 @@ fi
       #Allow pool to run as root (disabled by default)
 service php7.3-fpm start
 service php7.3-fpm stop
-php-fpm -F -R
+php7.3-fpm -F -R
 
