@@ -7,8 +7,6 @@ if [ "$(ls -A $DIR)" ]; then
 echo "$DIR isn't empty running php-fpm in the foreground"
 else
 echo "$DIR is Empty \n Copying and modifying wordpress"
-#copy wordpress files
-cp -R /wordpress /var/www/html/worpress
 #replace necessary config using sed read about how it works here https://www.cyberciti.biz/faq/how-to-use-sed-to-find-and-replace-text-in-files-in-linux-unix-shell/
 sed -i 's/database_name_here/'$DBNAME'/g' $DIR/wp_config.php
 sed -i 's/username_here/'$DBUSER'/g' $DIR/wp_config.php
