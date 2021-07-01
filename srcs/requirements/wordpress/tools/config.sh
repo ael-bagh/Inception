@@ -21,6 +21,7 @@ fi
       #force to stay in foreground, and ignore daemonize option from config file
 #-R, --allow-to-run-as-root
       #Allow pool to run as root (disabled by default)
-service php7.3-fpm start
-service php7.3-fpm stop
-php-fpm -F -R
+# service php7.3-fpm start
+# service php7.3-fpm stop
+# php-fpm -F -R
+tail -f
