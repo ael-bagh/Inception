@@ -10,7 +10,7 @@ services:
   wordpress:
     build: ./requirements/wordpress
     volumes:
-      - ./tools/data/html:/var/www/html/
+      - ./tools/data/html:/var/www/
 #  mariadb:
 #    build: ./requirements/mariadb
 #    ports:
