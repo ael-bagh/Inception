@@ -1,6 +1,6 @@
 DIR="/var/www/wordpress/";
 apt-get update && apt-get upgrade -y
-apt -y install php7.3-fpm php7.3-common php7.3-mysql
+apt -y install php7.3-fpm php7.3-common php7.3-mysql php
 #https://www.cyberciti.biz/faq/linux-unix-shell-check-if-directory-empty
 #check if wordpress directory exists
 if [ "$(ls -A $DIR)" ]; then
@@ -23,5 +23,5 @@ fi
       #Allow pool to run as root (disabled by default)
 service php7.3-fpm start
 service php7.3-fpm stop
-php7.3-fpm -F -R
+php-fpm7.3 -F -R
 
