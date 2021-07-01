@@ -1,4 +1,3 @@
-DIR="/var/www/html/wordpress"
 apt-get update && apt-get upgrade -y
 apt -y install php7.3-fpm php7.3-common php7.3-mysql
 #https://www.cyberciti.biz/faq/linux-unix-shell-check-if-directory-empty
@@ -8,9 +7,9 @@ echo "$DIR isn't empty running php-fpm in the foreground"
 else
 echo "$DIR is Empty \n Copying and modifying wordpress"
 #replace necessary config using sed read about how it works here https://www.cyberciti.biz/faq/how-to-use-sed-to-find-and-replace-text-in-files-in-linux-unix-shell/
-sed -i 's/database_name_here/'$DBNAME'/g' $DIR/wp_config.php
-sed -i 's/username_here/'$DBUSER'/g' $DIR/wp_config.php
-sed -i 's/password_here/'$DBPASS'/g' $DIR/wp_config.php
+sed -i 's/database_name_here/'$DBNAME'/g' /var/www/html/wp_config.php
+sed -i 's/username_here/'$DBUSER'/g' /var/www/html/wp_config.php
+sed -i 's/password_here/'$DBPASS'/g' /var/www/html/wp_config.php
 fi
 #run php-fpm in the foreground so it could be PID 1 in a docker container.
 #solution from here https://stackoverflow.com/questions/37313780/how-can-i-start-php-fpm-in-a-docker-container-by-default/44409813
