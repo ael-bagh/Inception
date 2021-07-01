@@ -5,14 +5,23 @@ services:
     build: ./requirements/nginx
     ports:
       - 443:443
+    depends_on: 
+      - wordpress
     volumes:
-      - ./tools/data/html:/var/www/wordpress
+      - /data/html:/var/www/html
+    networks:
+      - wordpress
   wordpress:
     build: ./requirements/wordpress
     volumes:
-      - ./tools/data/html:/var/www/wordpress
+      - /data/html:/var/www/html
+    networks:
+      - wordpress
 #  mariadb:
 #    build: ./requirements/mariadb
 #    ports:
 #      - 3306:3306
 
+networks: 
+  wordpress:
+    driver: bridge
