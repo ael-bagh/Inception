@@ -6,11 +6,11 @@ services:
     ports:
       - 443:443
     volumes:
-      - .tools/data/html:/var/www/html/wordpress
+      - .tools/data/html:/var/www/html/
   wordpress:
     build: ./requirements/wordpress
     volumes:
-      - ./tools/data/html:/var/www/html/wordpress
+      - ./tools/data/html:/var/www/html/
 #  mariadb:
 #    build: ./requirements/mariadb
 #    ports:
