@@ -1,7 +1,7 @@
+DIR="/var/www/html/wordpress"
 apt-get update && apt-get upgrade -y
 apt -y install php7.3-fpm php7.3-common php7.3-mysql
-#https://www.cyberciti.biz/faq/linux-unix-shell-check-if-directory-empty/
-DIR="/var/www/html/wordpress"
+#https://www.cyberciti.biz/faq/linux-unix-shell-check-if-directory-empty
 #check if wordpress directory exists
 if [ "$(ls -A $DIR)" ]; then
 echo "$DIR isn't empty running php-fpm in the foreground"
