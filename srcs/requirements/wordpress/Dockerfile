@@ -1,7 +1,6 @@
 FROM debian:buster
-COPY tools/wordpress wordpress
-RUN mv /wordpress/* /var/www/
+WORKDIR /var/www/
+COPY tools/wordpress wp
 COPY tools/config.sh config.sh
-RUN chown -R www-data /var/www/
 RUN chmod +x config.sh
 CMD [ "sh", "config.sh" ]

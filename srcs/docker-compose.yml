@@ -6,7 +6,7 @@ services:
     ports:
       - 443:443
     volumes:
-      - .tools/data/html:/var/www/html/
+      - .tools/data/html:/var/www/
   wordpress:
     build: ./requirements/wordpress
     volumes:
