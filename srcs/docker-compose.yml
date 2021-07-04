@@ -3,25 +3,58 @@ version: '3'
 services:
   nginx:
     build: ./requirements/nginx
+    container_name: nginx
     ports:
       - 443:443
-    depends_on: 
-      - wordpress
     volumes:
-      - /data/html:/var/www/html
+      - /home/ael-bagh/data/html:/var/www/html
     networks:
       - wordpress
+
   wordpress:
     build: ./requirements/wordpress
+    container_name: wordpress
     volumes:
-      - /data/html:/var/www/html
+      - /home/ael-bagh/data/html:/var/www/html
     networks:
       - wordpress
-#  mariadb:
-#    build: ./requirements/mariadb
-#    ports:
-#      - 3306:3306
+    env_file:
+      - .env
+    depends_on:
+      - mariadb
 
-networks: 
+  mariadb:
+    build: ./requirements/mariadb
+    container_name: mariadb
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - /home/ael-bagh/data/mysql:/var/lib/mysql
+    networks:
+      - wordpress
+    env_file: 
+      - .env
+
+networks:
   wordpress:
     driver: bridge
+volumes:
+  mariadb:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/ael-bagh/data/mysql'
+  wordpress:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/ael-bagh/data/html'
+  nginx:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/ael-bagh/data/html'
